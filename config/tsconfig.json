@@ -23,7 +23,7 @@
     "noFallthroughCasesInSwitch": true, // Report errors for fallthrough cases in switch statement
     "baseUrl": "./",
     "paths": {
-      "*": ["*", "types/*"]
+      "*": ["src/*", "generated-module-types/*"]
     }
   },
   "include": [

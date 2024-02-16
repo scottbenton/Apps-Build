@@ -1,8 +1,6 @@
 import { Configuration, container } from "webpack";
 import "webpack-dev-server";
 // @ts-ignore
-import portFinderSync from "portfinder-sync";
-// @ts-ignore
 import ExternalTemplateRemotesPlugin from "external-remotes-plugin";
 import {
   ModuleScope,
@@ -65,7 +63,7 @@ export function getPlugins(params: ConfigParams): Configuration["plugins"] {
     new ExternalTemplateRemotesPlugin(),
     new WebpackRemoteTypesPlugin({
       remotes: deployedRemoteModules,
-      outputDir: "./src/module-types", // supports [name] as the remote name
+      outputDir: "./generated-module-types", // supports [name] as the remote name
       remoteFileName: "[name]-dts.tgz", // default filename is [name]-dts.tgz where [name] is the remote name, for example, `app` with the above setup
     }),
     new HtmlWebPackPlugin({

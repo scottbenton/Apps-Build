@@ -1,4 +1,5 @@
 import { ConfigParams } from "../types";
+import path from "path";
 
 const javascriptAuto = {
   test: /\.m?js/,
@@ -43,7 +44,7 @@ export function getDTSRules(params: ConfigParams) {
       jsonLoader,
       {
         test: /\.tsx?$/,
-        exclude: /node_modules/,
+        include: path.resolve(__dirname, "./src"),
         use: [
           {
             loader: "dts-loader",
