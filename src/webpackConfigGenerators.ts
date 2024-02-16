@@ -47,7 +47,7 @@ interface ModuleConfigParams extends ConfigParams {
   exposes: Record<string, string>;
 }
 
-export function getModuleWebpackConfig(
+export function constructModuleWebpackConfig(
   params: ModuleConfigParams
 ): Configuration[] {
   const { name, modules, dependencies, exposes } = params;
