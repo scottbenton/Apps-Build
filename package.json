@@ -1,7 +1,7 @@
 {
-  "name": "@scottbenton/apps-config",
-  "version": "1.0.1",
-  "description": "Configuration files for the apps microfrontend",
+  "name": "@scottbenton/apps-build",
+  "version": "1.0.0",
+  "description": "Build & build configuration files for the apps microfrontend",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -33,6 +33,7 @@
     "react-router-dom": "6.22.0"
   },
   "dependencies": {
+    "@scottbenton/apps-config": "^1.0.2",
     "portfinder-sync": "^0.0.2"
   }
 }
