@@ -27,13 +27,13 @@
     "react-router-dom": "6.22.0"
   },
   "dependencies": {
+    "@module-federation/typescript": "^3.1.1",
     "@scottbenton/apps-config": "^1.0.2",
     "dotenv-webpack": "^8.0.1",
     "external-remotes-plugin": "^1.0.0",
     "html-webpack-plugin": "^5.6.0",
     "portfinder-sync": "^0.0.2",
     "webpack": "^5.90.2",
-    "webpack-dev-server": "^5.0.1",
-    "webpack-remote-types-plugin": "^0.2.7"
+    "webpack-dev-server": "^5.0.1"
   }
 }

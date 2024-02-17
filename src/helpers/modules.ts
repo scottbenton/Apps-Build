@@ -1,6 +1,3 @@
-import { ConfigParams } from "../types";
-import path from "path";
-
 const javascriptAuto = {
   test: /\.m?js/,
   type: "javascript/auto",
@@ -30,31 +27,5 @@ const jsonLoader = { test: /\.json$/, type: "json" };
 export function getModuleRules() {
   return {
     rules: [javascriptAuto, cssSass, babelLoader, imageLoader, jsonLoader],
-  };
-}
-
-export function getDTSRules(params: ConfigParams) {
-  const { name, exposes } = params;
-  return {
-    rules: [
-      javascriptAuto,
-      cssSass,
-      babelLoader,
-      imageLoader,
-      jsonLoader,
-      {
-        test: /\.tsx?$/,
-        include: path.resolve(__dirname, "./src"),
-        use: [
-          {
-            loader: "dts-loader",
-            options: {
-              name: name,
-              exposes: exposes,
-            },
-          },
-        ],
-      },
-    ],
   };
 }

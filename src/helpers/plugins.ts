@@ -8,9 +8,10 @@ import {
 } from "@scottbenton/apps-config";
 
 import HtmlWebPackPlugin from "html-webpack-plugin";
-import WebpackRemoteTypesPlugin from "webpack-remote-types-plugin";
 import DotEnv from "dotenv-webpack";
 import { ConfigParams } from "../types";
+import { FederatedTypesPlugin } from "@module-federation/typescript";
+import { ModuleFederationPluginOptions } from "@module-federation/typescript/src/types";
 
 const { ModuleFederationPlugin } = container;
 
@@ -49,22 +50,22 @@ export function getPlugins(params: ConfigParams): Configuration["plugins"] {
     ] = `${scope}@${module.defaultUrl}/remoteEntry.js`;
   });
 
+  const federationConfig: ModuleFederationPluginOptions = {
+    name,
+    filename: "remoteEntry.js",
+    remotes: remoteModules,
+    exposes,
+    shared: {
+      ...dependencies,
+      ...singletonDependencies,
+    },
+  };
+
   return [
-    new ModuleFederationPlugin({
-      name: name,
-      filename: "remoteEntry.js",
-      remotes: remoteModules,
-      exposes,
-      shared: {
-        ...dependencies,
-        ...singletonDependencies,
-      },
-    }),
+    new ModuleFederationPlugin(federationConfig),
     new ExternalTemplateRemotesPlugin(),
-    new WebpackRemoteTypesPlugin({
-      remotes: deployedRemoteModules,
-      outputDir: "./generated-module-types", // supports [name] as the remote name
-      remoteFileName: "[name]-dts.tgz", // default filename is [name]-dts.tgz where [name] is the remote name, for example, `app` with the above setup
+    new FederatedTypesPlugin({
+      federationConfig,
     }),
     new HtmlWebPackPlugin({
       template: "./public/index.html",
