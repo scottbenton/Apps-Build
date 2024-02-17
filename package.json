@@ -1,6 +1,6 @@
 {
   "name": "@scottbenton/apps-build",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Build & build configuration files for the apps microfrontend",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
