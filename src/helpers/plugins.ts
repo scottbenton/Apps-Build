@@ -18,22 +18,27 @@ const { ModuleFederationPlugin } = container;
 const singletonDependencies = {
   react: {
     singleton: true,
+    eager: true,
     requiredVersion: "18.2.0",
   },
   "react-dom": {
     singleton: true,
+    eager: true,
     requiredVersion: "18.2.0",
   },
   "react-router-dom": {
     singleton: true,
+    eager: true,
     requiredVersion: "6.22.0",
   },
   "react-helmet-async": {
     singleton: true,
+    eager: true,
     requiredVersion: "2.0.4",
   },
   "react-singleton-context": {
     singleton: true,
+    eager: true,
     requiredVersion: "1.0.5",
   },
 };
