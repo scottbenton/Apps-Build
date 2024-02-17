@@ -20,18 +20,14 @@ module.exports = {
       },
     },
   ],
-  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["@typescript-eslint", "react"],
+  plugins: ["react"],
   rules: {
-    "react/react-in-jsx-scope": 0,
-    "no-async-promise-executor": 0,
-    "no-prototype-builtins": 0,
-    "react/prop-types": 0,
-    "no-case-declarations": 0,
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
   },
   settings: {
     react: {
