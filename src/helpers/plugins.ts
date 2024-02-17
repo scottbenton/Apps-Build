@@ -34,7 +34,6 @@ const singletonDependencies = {
   },
   "react-singleton-context": {
     singleton: true,
-    eager: true,
     requiredVersion: "1.0.5",
   },
 };
