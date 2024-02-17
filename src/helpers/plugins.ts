@@ -28,7 +28,7 @@ const singletonDependencies = {
   },
   "react-router-dom": {
     singleton: true,
-    requiredVersion: "6.22.0",
+    requiredVersion: "6.22.1",
     eager: true,
   },
   "react-helmet-async": {
