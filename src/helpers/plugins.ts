@@ -65,7 +65,7 @@ export function getPlugins(params: ConfigParams): Configuration["plugins"] {
     new ModuleFederationPlugin(federationConfig),
     new ExternalTemplateRemotesPlugin(),
     new FederatedTypesPlugin({
-      federationConfig,
+      federationConfig: { ...federationConfig, remotes: deployedRemoteModules },
     }),
     new HtmlWebPackPlugin({
       template: "./public/index.html",
