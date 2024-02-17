@@ -11,8 +11,7 @@ const BASE_PORT = 3001;
 const BASE_MODULE_PORT = 3002;
 
 export function constructModuleWebpackConfig(
-  params: ConfigParams,
-  eagerDependencies?: boolean
+  params: ConfigParams
 ): Configuration[] {
   const port = portFinderSync.getPort(BASE_MODULE_PORT);
 
@@ -41,14 +40,13 @@ export function constructModuleWebpackConfig(
         historyApiFallback: true,
       },
       module: getModuleRules(),
-      plugins: getPlugins(params, eagerDependencies),
+      plugins: getPlugins(params),
     },
   ];
 }
 
 export function constructBaseWebpackConfig(
-  params: ConfigParams,
-  eagerDependencies?: boolean
+  params: ConfigParams
 ): Configuration {
   return {
     output: {
@@ -67,6 +65,6 @@ export function constructBaseWebpackConfig(
 
     module: getModuleRules(),
 
-    plugins: getPlugins(params, eagerDependencies),
+    plugins: getPlugins(params),
   };
 }
