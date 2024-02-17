@@ -20,12 +20,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "incremental": true,
-    "noFallthroughCasesInSwitch": true,
-    "baseUrl": ".",
-    "paths": {
-      "*": ["./@mf-types/*"]
-    }
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "build", "dist"]
+    "noFallthroughCasesInSwitch": true
+  }
 }
