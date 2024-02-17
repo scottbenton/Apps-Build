@@ -13,8 +13,6 @@ const BASE_MODULE_PORT = 3002;
 export function constructModuleWebpackConfig(
   params: ConfigParams
 ): Configuration[] {
-  const { name, exposes } = params;
-
   const port = portFinderSync.getPort(BASE_MODULE_PORT);
 
   return [

@@ -32,6 +32,11 @@ const singletonDependencies = {
     singleton: true,
     requiredVersion: "2.0.4",
   },
+  "react-singleton-context": {
+    singleton: true,
+    eager: true,
+    requiredVersion: "1.0.5",
+  },
 };
 
 export function getPlugins(params: ConfigParams): Configuration["plugins"] {
