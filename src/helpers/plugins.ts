@@ -18,32 +18,41 @@ const { ModuleFederationPlugin } = container;
 const singletonDependencies = {
   react: {
     singleton: true,
-    eager: true,
     requiredVersion: "18.2.0",
   },
   "react-dom": {
     singleton: true,
-    eager: true,
     requiredVersion: "18.2.0",
   },
   "react-router-dom": {
     singleton: true,
-    eager: true,
     requiredVersion: "6.22.0",
   },
   "react-helmet-async": {
     singleton: true,
-    eager: true,
     requiredVersion: "2.0.4",
   },
   "react-singleton-context": {
     singleton: true,
-    eager: true,
     requiredVersion: "1.0.5",
   },
 };
+const eagerSingletonDependencies: Record<
+  string,
+  { singleton: boolean; eager: boolean; requiredVersion: string }
+> = {};
 
-export function getPlugins(params: ConfigParams): Configuration["plugins"] {
+Object.keys(singletonDependencies).forEach((dep) => {
+  eagerSingletonDependencies[dep] = {
+    ...singletonDependencies[dep as keyof typeof singletonDependencies],
+    eager: true,
+  };
+});
+
+export function getPlugins(
+  params: ConfigParams,
+  eager?: boolean
+): Configuration["plugins"] {
   const { name, modules, exposes, dependencies = {} } = params;
 
   const remoteModules: Partial<Record<ModuleScope, string>> = {};
@@ -59,6 +68,8 @@ export function getPlugins(params: ConfigParams): Configuration["plugins"] {
     ] = `${scope}@${module.defaultUrl}/remoteEntry.js`;
   });
 
+  console.debug(eager ? eagerSingletonDependencies : singletonDependencies);
+
   const federationConfig: ModuleFederationPluginOptions = {
     name,
     filename: "remoteEntry.js",
@@ -66,7 +77,7 @@ export function getPlugins(params: ConfigParams): Configuration["plugins"] {
     exposes,
     shared: {
       ...dependencies,
-      ...singletonDependencies,
+      ...(eager ? eagerSingletonDependencies : singletonDependencies),
     },
   };
 
