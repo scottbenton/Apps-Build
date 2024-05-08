@@ -12,7 +12,7 @@ import DotEnv from "dotenv-webpack";
 import { ConfigParams } from "../types";
 import { FederatedTypesPlugin } from "@module-federation/typescript";
 import { ModuleFederationPluginOptions } from "@module-federation/typescript/src/types";
-import TsConfigPathsPlugin from "tsconfig-paths-webpack-plugin";
+import { TsconfigPathsPlugin } from "tsconfig-paths-webpack-plugin";
 
 const { ModuleFederationPlugin } = container;
 
@@ -81,6 +81,6 @@ export function getPlugins(params: ConfigParams): Configuration["plugins"] {
       template: "./public/index.html",
     }),
     new DotEnv(),
-    new TsConfigPathsPlugin(),
+    new TsconfigPathsPlugin(),
   ];
 }
