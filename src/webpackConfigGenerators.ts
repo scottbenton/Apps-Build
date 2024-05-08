@@ -6,6 +6,7 @@ import portFinderSync from "portfinder-sync";
 import { ConfigParams } from "./types";
 import { getPlugins } from "./helpers/plugins";
 import { getModuleRules } from "./helpers/modules";
+import { TsconfigPathsPlugin } from "tsconfig-paths-webpack-plugin";
 
 const BASE_PORT = 3001;
 const BASE_MODULE_PORT = 3002;
@@ -23,6 +24,7 @@ export function constructModuleWebpackConfig(
 
       resolve: {
         extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
+        plugins: [new TsconfigPathsPlugin()],
       },
 
       devServer: {
@@ -55,6 +57,7 @@ export function constructBaseWebpackConfig(
 
     resolve: {
       extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
+      plugins: [new TsconfigPathsPlugin()],
     },
 
     devServer: {
